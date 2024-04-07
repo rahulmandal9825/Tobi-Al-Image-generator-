@@ -73,7 +73,7 @@ const Sidebar = () => {
 
                     <SignedOut>
                         <Button asChild>
-                            <Link href="/login">Login</Link>
+                            <Link href="/sign-in">Login</Link>
                         </Button>
                     </SignedOut>
                 </nav>

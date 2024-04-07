@@ -1,6 +1,6 @@
 import mongoose ,{Mongoose} from 'mongoose';
 
-const MONGO = process.env.MONGO;
+const MONGODB = process.env.MONGODB;
 
 interface MongooseConnection{
     conn:Mongoose | null;
@@ -19,13 +19,15 @@ if(!cached) {
 export const connectToDatabase =async () =>{
     if (cached.conn) return cached.conn 
 
-    if(!MONGO) throw new Error('MIssing MONGO');
+    if(!MONGODB) throw new Error('MIssing MONGO');
 
     cached.promise =
-    cached.promise || mongoose.connect(MONGO , {
+    cached.promise || mongoose.connect(MONGODB , {
         dbName: 'Tobi', bufferCommands:false
     })
     cached.conn = await cached.promise;
+    console.log("conected to database");
+    
     
     return cached.conn;
 

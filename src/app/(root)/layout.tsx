@@ -5,10 +5,10 @@ import React from 'react'
 
 const Layout = ({children}: {children: React.ReactNode}) => {
   return (
-    <main className="w-full">
+    <main className="w-full flex">
         <Sidebar/>
         <MobileNav/>
-        <div>
+        <div className='w-full'>
                {children}
         </div>
     </main>
