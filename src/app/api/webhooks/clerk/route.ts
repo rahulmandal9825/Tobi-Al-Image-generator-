@@ -9,7 +9,12 @@ import { createUser, deleteUser, updateUser } from "@/lib/actions/user.actions";
 
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
+
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
+
+  console.log(WEBHOOK_SECRET);
+  console.log("webhook is working");
+    
 
   if (!WEBHOOK_SECRET) {
     throw new Error(
@@ -58,9 +63,12 @@ export async function POST(req: Request) {
   const eventType = evt.type;
 
   // CREATE
-  console.log();
+
   
   if (eventType === "user.created") {
+    console.log(evt.data);
+    console.log(evt.type);
+    
     const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
 
     console.log(evt.data);
@@ -73,10 +81,10 @@ export async function POST(req: Request) {
       lastName: last_name,
       photo: image_url,
     };
+
    
 
     const newUser = await createUser(user);
- console.log(user);
     // Set public metadata
     if (newUser) {
       await clerkClient.users.updateUserMetadata(id, {
@@ -86,7 +94,7 @@ export async function POST(req: Request) {
       });
     }
 
-    return NextResponse.json({ message: "OK", user: newUser });
+    return NextResponse.json({ message: "OK user created", user: newUser });
   }
 
   // UPDATE
@@ -118,4 +126,9 @@ export async function POST(req: Request) {
   console.log("Webhook body:", body);
 
   return new Response("", { status: 200 });
+
+
+
+  
+
 }

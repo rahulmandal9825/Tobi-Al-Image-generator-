@@ -1,32 +1,42 @@
-"use client"
-import { createUser } from '@/lib/actions/user.actions';
+
+import Header from '@/components/Header';
+import TransformationForm from '@/components/TransformationForm';
+import { transformationTypes } from '@/constants';
+import { createUser, getUserById } from '@/lib/actions/user.actions';
+import { connectToDatabase } from '@/lib/database/mongoose';
+import { auth } from '@clerk/nextjs';
+import {  redirect } from 'next/navigation';
 import React from 'react';
 
-const AddTransformationPage = () => {
-  const user = {
-    clerkId: 'ssdfadsfhsffdsf',
-    email: 'rahulmandal',
-    username: 'rahul',
-    firstName: 'rahul',
-    lastName: 'mandall',
-    photo: 'http://sdsdsdsd'
-  };
+const AddTransformationPage = async ({params: {type}}:SearchParamProps) => {
 
-  const handleClick = async () => {
-    try {
-      const res = await createUser(user);
-      console.log('User created:', res);
-      // Handle success, e.g., show a success message to the user
-    } catch (error) {
-      console.error('Error creating user:', error);
-      // Handle error, e.g., show an error message to the user
-    }
-  };
-  
+ const transformation = transformationTypes[type];
+    
+ const { userId} = auth();
+
+ if(!userId) redirect('sign-in')
+
+ const user = await getUserById(userId);
+
+ console.log(user);
+ 
+   await connectToDatabase()
+
+
+
   return (
-    <div className='w-full flex justify-center'>
-      <button className='p-2 m-10 px-4 rounded-xl bg-black text-white' onClick={handleClick}>button</button>
-    </div>
+  <div className='w-full flex justify-center'>
+
+<Header title={transformation.title} subtitle={transformation.subTitle}/>
+<TransformationForm 
+    action="Add" 
+    // userId={user._id} 
+    // type={transformation.type as TransformationTypeKey} 
+    // creditBalance={user.creditBalance}
+/>
+  </div>
+
+    
   );
 };
 
