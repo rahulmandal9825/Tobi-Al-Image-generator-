@@ -28,12 +28,12 @@ const AddTransformationPage = async ({params: {type}}:SearchParamProps) => {
   <div className='w-full flex justify-center'>
 
 <Header title={transformation.title} subtitle={transformation.subTitle}/>
-<TransformationForm 
+{/* <TransformationForm 
     action="Add" 
     // userId={user._id} 
     // type={transformation.type as TransformationTypeKey} 
     // creditBalance={user.creditBalance}
-/>
+/> */}
   </div>
 
     
