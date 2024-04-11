@@ -7,8 +7,9 @@ import {navLinks} from "../constants/index";
 import {usePathname} from "next/navigation";
 import {Button} from "./ui/button";
 
-const Sidebar = () => {
+const Sidebar = async () => {
     const pathname = usePathname();
+    
 
     return (
         <aside className="sidebar w-[300px]  ">
