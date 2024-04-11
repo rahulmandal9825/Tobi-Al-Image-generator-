@@ -12,7 +12,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
 
   return (
     <>
-      <section className="home bg-orange-400 m-10 h-[45vh] ">
+      <section className="home bg-orange-400 m-10 mt-20 md:mt-10 h-[45vh] ">
         <h1 className="home-heading">
           Unleash Your Creative Vision with Tobi
         </h1>
@@ -32,7 +32,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
         </ul>
       </section>
 
-      <section className="sm:mt-12">
+      <section className=" mt-20 sm:mt-10 p-10">
         <Collection 
           hasSearch={true}
           images={images?.data}

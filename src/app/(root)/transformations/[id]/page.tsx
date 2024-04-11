@@ -15,10 +15,10 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
   const image = await getImageById(id);
 
   return (
-    <>
+    <div className="p-10">
       <Header title={image.title} />
 
-      <section className="mt-5 flex flex-wrap gap-4">
+      <section className="mt-5 flex flex-wrap gap-4 ">
         <div className="p-14-medium md:p-16-medium flex gap-2">
           <p className="text-dark-600">Transformation:</p>
           <p className=" capitalize text-purple-400">
@@ -95,7 +95,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
           </div>
         )}
       </section>
-    </>
+    </div>
   );
 };
 
