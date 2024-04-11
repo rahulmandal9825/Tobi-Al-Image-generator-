@@ -23,8 +23,9 @@ const AddTransformationPage = async ({params: {type}}:SearchParamProps) => {
 
   return (
   <div className='w-full flex justify-center flex-col p-[50px] text-xl'>
+   
 
-<Header title={transformation.title} subtitle={transformation.subTitle}/>
+<Header title={transformation.title} subtitle={transformation.subTitle} creditBalance={user.creditBalance}  />
 <TransformationForm 
     action="Add" 
     userId={user._id} 
