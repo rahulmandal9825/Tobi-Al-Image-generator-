@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Variable } from "lucide-react";
+import { Toaster } from "@/components/ui/toaster";
 
 
 const IBMPlex = IBM_Plex_Sans({ subsets: ["latin"] ,
@@ -25,6 +26,7 @@ export default function RootLayout({
     <ClerkProvider appearance={{ variables: { colorPrimary: '#FF8C00'}}}>
        <html lang="en">
       <body className={cn("antialiased" , IBMPlex.variable)}>{children}</body>
+      <Toaster/>
     </html>
     </ClerkProvider>
    

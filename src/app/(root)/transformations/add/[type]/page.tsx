@@ -20,20 +20,17 @@ const AddTransformationPage = async ({params: {type}}:SearchParamProps) => {
 
  console.log(user);
  
-   await connectToDatabase()
-
-
 
   return (
-  <div className='w-full flex justify-center'>
+  <div className='w-full flex justify-center flex-col p-[50px] text-xl'>
 
 <Header title={transformation.title} subtitle={transformation.subTitle}/>
-{/* <TransformationForm 
+<TransformationForm 
     action="Add" 
-    // userId={user._id} 
-    // type={transformation.type as TransformationTypeKey} 
-    // creditBalance={user.creditBalance}
-/> */}
+    userId={user._id} 
+    type={transformation.type as TransformationTypeKey} 
+    creditBalance={user.creditBalance}
+/>
   </div>
 
     

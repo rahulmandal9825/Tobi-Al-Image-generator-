@@ -11,7 +11,7 @@ const Sidebar = () => {
     const pathname = usePathname();
 
     return (
-        <aside className="sidebar border-r-[5px] border-orange-400">
+        <aside className="sidebar w-[300px]  ">
             <div className="flex size-full flex-col gap-4">
                 <Link href="/" className="sidebar-logo">
                     <Image alt="logo" src="/logo.png" width={300} height={100} />
@@ -25,7 +25,7 @@ const Sidebar = () => {
                                 return (
                                     <div
                                         key={link.route}
-                                        className={` flex-2  w-full py-3 p-2 rounded-tl-lg rounded-bl-lg ${
+                                        className={` flex-2  w-full py-3 p-2 rounded-lg ${
                                             isActive ? " bg-orange-400 text-white" : "text-black"
                                         }`}
                                     >
@@ -43,13 +43,14 @@ const Sidebar = () => {
                                 );
                             })}
                         </div>
-                        <div className="sidebar-nav_elements pb-5 border-t-2 border-orange-500/60 ">
+                        <div className="sidebar-nav_elements pb-5  ">
+                            <div className="bg-orange-400 h-1 rounded-xl w-full"> </div>
                             {navLinks.slice(6).map((link) => {
                                 const isActive = link.route === pathname;
                                 return (
                                     <div
                                         key={link.route}
-                                        className={` flex-2  w-full py-3 p-2 rounded-lg  ${
+                                        className={` flex-2  w-full py-3 p-2 mt-2 rounded-lg  ${
                                             isActive ? " bg-orange-400 text-white" : "text-black"
                                         }`}
                                     >
